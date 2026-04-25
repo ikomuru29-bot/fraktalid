@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coastline Paradox Explorer</title>
+  <title>Rannajoone paradoks</title>
   <link
     rel="stylesheet"
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -12,18 +12,18 @@
   >
   <style>
     :root {
-      --bg: #f7f2e7;
-      --panel: rgba(255, 252, 246, 0.94);
+      --bg: #f3f0ea;
+      --panel: rgba(255, 255, 253, 0.9);
       --ink: #1f2937;
-      --muted: #5f6b7a;
-      --line: rgba(31, 41, 55, 0.12);
+      --muted: #667085;
+      --line: rgba(31, 41, 55, 0.08);
       --sea: #0f766e;
-      --accent: #f97316;
-      --accent-2: #1d4ed8;
+      --accent: #d97706;
+      --accent-2: #2563eb;
       --good: #166534;
       --warn: #9a3412;
-      --shadow: 0 20px 50px rgba(31, 41, 55, 0.12);
-      --radius: 24px;
+      --shadow: 0 10px 30px rgba(31, 41, 55, 0.07);
+      --radius: 20px;
     }
 
     * {
@@ -36,16 +36,16 @@
       font-family: Georgia, "Times New Roman", serif;
       color: var(--ink);
       background:
-        radial-gradient(circle at top left, rgba(15, 118, 110, 0.14), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(249, 115, 22, 0.12), transparent 26%),
-        linear-gradient(135deg, #f8f3e8, #dfedf4);
+        radial-gradient(circle at top left, rgba(15, 118, 110, 0.08), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(37, 99, 235, 0.06), transparent 24%),
+        linear-gradient(135deg, #f7f5f1, #eef4f3);
     }
 
     .page {
-      width: min(1320px, calc(100% - 28px));
-      margin: 18px auto 30px;
+      width: min(1240px, calc(100% - 24px));
+      margin: 14px auto 22px;
       display: grid;
-      gap: 18px;
+      gap: 14px;
     }
 
     .hero,
@@ -58,7 +58,7 @@
     }
 
     .hero {
-      padding: 30px;
+      padding: 24px;
       position: relative;
       overflow: hidden;
     }
@@ -66,10 +66,10 @@
     .hero::after {
       content: "";
       position: absolute;
-      width: 360px;
-      height: 360px;
-      right: -140px;
-      bottom: -160px;
+      width: 260px;
+      height: 260px;
+      right: -90px;
+      bottom: -110px;
       border-radius: 50%;
       background: radial-gradient(circle, rgba(15, 118, 110, 0.18), transparent 70%);
       pointer-events: none;
@@ -95,8 +95,8 @@
     }
 
     h1 {
-      margin-top: 16px;
-      font-size: clamp(2.4rem, 5.3vw, 4.8rem);
+      margin-top: 12px;
+      font-size: clamp(2.1rem, 4.8vw, 4rem);
       max-width: 12ch;
     }
 
@@ -105,27 +105,27 @@
     }
 
     .lead {
-      margin-top: 16px;
-      max-width: 76ch;
+      margin-top: 12px;
+      max-width: 62ch;
       color: var(--muted);
-      line-height: 1.72;
-      font-size: 1.05rem;
+      line-height: 1.58;
+      font-size: 0.98rem;
     }
 
     .layout {
       display: grid;
       grid-template-columns: minmax(290px, 340px) minmax(0, 1fr);
-      gap: 18px;
+      gap: 14px;
     }
 
     .sidebar,
     .content {
       display: grid;
-      gap: 18px;
+      gap: 14px;
     }
 
     .panel {
-      padding: 22px;
+      padding: 18px;
     }
 
     .panel-head {
@@ -133,7 +133,7 @@
       justify-content: space-between;
       align-items: flex-end;
       gap: 12px;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
 
     .panel-head p,
@@ -142,16 +142,16 @@
     .steps {
       color: var(--muted);
       line-height: 1.65;
-      font-size: 0.96rem;
+      font-size: 0.92rem;
     }
 
     .field {
       display: grid;
-      gap: 8px;
+      gap: 6px;
     }
 
     .field + .field {
-      margin-top: 14px;
+      margin-top: 10px;
     }
 
     label {
@@ -174,8 +174,8 @@
 
     input[type="text"],
     select {
-      padding: 12px 14px;
-      border-radius: 16px;
+      padding: 10px 12px;
+      border-radius: 14px;
       border: 1px solid var(--line);
       background: rgba(255, 255, 255, 0.78);
       color: var(--ink);
@@ -185,8 +185,8 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: 86px;
-      padding: 8px 12px;
+      min-width: 78px;
+      padding: 7px 10px;
       border-radius: 999px;
       background: rgba(15, 118, 110, 0.09);
       color: var(--sea);
@@ -196,14 +196,14 @@
     .button-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 14px;
+      gap: 8px;
+      margin-top: 10px;
     }
 
     button {
       border: none;
-      padding: 12px 16px;
-      border-radius: 16px;
+      padding: 10px 14px;
+      border-radius: 14px;
       font-weight: 700;
       cursor: pointer;
       transition: transform 0.15s ease, opacity 0.15s ease;
@@ -228,7 +228,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-bottom: 18px;
+      margin-bottom: 12px;
     }
 
     .tool-switcher button.active {
@@ -243,8 +243,8 @@
     .status,
     .callout,
     .footnote {
-      padding: 16px 18px;
-      border-radius: 18px;
+      padding: 12px 14px;
+      border-radius: 16px;
       line-height: 1.6;
       font-size: 0.95rem;
     }
@@ -270,13 +270,13 @@
     .metrics {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 14px;
+      gap: 10px;
+      margin-top: 10px;
     }
 
     .metric {
-      padding: 14px;
-      border-radius: 18px;
+      padding: 12px;
+      border-radius: 16px;
       border: 1px solid var(--line);
       background: rgba(255, 255, 255, 0.7);
     }
@@ -289,8 +289,8 @@
     }
 
     .metric .value {
-      margin-top: 10px;
-      font-size: 1.24rem;
+      margin-top: 8px;
+      font-size: 1.1rem;
       font-weight: 700;
     }
 
@@ -298,13 +298,13 @@
     .fractal-layout {
       display: grid;
       grid-template-columns: minmax(0, 1.55fr) minmax(280px, 0.95fr);
-      gap: 18px;
+      gap: 14px;
     }
 
     .canvas-wrap,
     .map-wrap {
       border: 1px solid var(--line);
-      border-radius: 22px;
+      border-radius: 18px;
       overflow: hidden;
       background:
         linear-gradient(45deg, rgba(31, 41, 55, 0.03) 25%, transparent 25%, transparent 75%, rgba(31, 41, 55, 0.03) 75%),
@@ -317,6 +317,14 @@
       display: block;
       width: 100%;
       height: auto;
+    }
+
+    #fractalCanvas {
+      cursor: grab;
+    }
+
+    #fractalCanvas.dragging {
+      cursor: grabbing;
     }
 
     #map {
@@ -334,6 +342,91 @@
       margin-top: 8px;
     }
 
+    .nature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .nature-card {
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .nature-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 82px;
+      border-radius: 14px;
+      font-size: 2rem;
+      background: linear-gradient(135deg, rgba(15, 118, 110, 0.12), rgba(29, 78, 216, 0.08));
+      margin-bottom: 10px;
+    }
+
+    .nature-card h3 {
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+
+    .chart-wrap {
+      margin-top: 16px;
+    }
+
+    .loading-box {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      color: var(--ink);
+      font-size: 1rem;
+      background: rgba(247, 245, 241, 0.72);
+      backdrop-filter: blur(6px);
+    }
+
+    .loading-box.active {
+      display: flex;
+    }
+
+    .loading-text {
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .progress-track {
+      width: min(420px, calc(100vw - 56px));
+      height: 14px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(37, 99, 235, 0.12);
+      border: 1px solid rgba(37, 99, 235, 0.12);
+      box-shadow: inset 0 1px 2px rgba(31, 41, 55, 0.08);
+    }
+
+    .progress-bar {
+      width: 42%;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--sea), var(--accent-2));
+      animation: progress-slide 1.4s ease-in-out infinite;
+      transform: translateX(-110%);
+    }
+
+    @keyframes progress-slide {
+      0% {
+        transform: translateX(-110%);
+      }
+      100% {
+        transform: translateX(260%);
+      }
+    }
+
     .search-row {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
@@ -343,7 +436,8 @@
     @media (max-width: 1080px) {
       .layout,
       .two-col,
-      .fractal-layout {
+      .fractal-layout,
+      .nature-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -372,12 +466,10 @@
 <body>
   <main class="page">
     <section class="hero">
-      <div class="eyebrow">Coastlines, Maps and Fractals</div>
-      <h1>Type an island name and let the map do most of the work.</h1>
+      <div class="eyebrow">Rannajooned ja fraktalid</div>
+      <h1>Otsi saar ja mõõda rannajoont.</h1>
       <p class="lead">
-        This version is more user friendly: you can search for an island, load map data from OpenStreetMap,
-        and measure the returned coastline shape with different ruler sizes. If the place lookup gives a usable polygon,
-        you do not need to upload an image or set the scale yourself.
+        Otsi saar nime järgi, mõõda rannajoont eri sammupikkustega ja katseta fraktaale.
       </p>
     </section>
 
@@ -386,59 +478,57 @@
         <section class="panel">
           <div class="panel-head">
             <div>
-              <h2>Quick Controls</h2>
-              <p>Search by island name and adjust one slider to explore the Coastline Paradox.</p>
+              <h2>Kiirseaded</h2>
             </div>
           </div>
 
           <div class="field">
-            <label for="placeSearch">Island or coastal place</label>
+            <label for="placeSearch">Saar või koht</label>
             <div class="search-row">
               <input id="placeSearch" type="text" value="Saaremaa" placeholder="Saaremaa, Hiiumaa, Sicily, Iceland">
-              <button id="searchButton" class="primary" type="button">Load Place</button>
+              <button id="searchButton" class="primary" type="button">Laadi koht</button>
             </div>
           </div>
 
           <div class="field">
-            <label for="baseMap">Map style</label>
+            <label for="baseMap">Kaardi stiil</label>
             <select id="baseMap">
               <option value="osm">OpenStreetMap</option>
-              <option value="carto">Carto Light</option>
+              <option value="carto">Hele kaart</option>
             </select>
           </div>
 
           <div class="status" id="mapStatus">
-            Search for an island name. If OpenStreetMap returns polygon geometry, the app will load it automatically and estimate the coastline without asking you for scale information.
+            Otsi saar ja laadi rannajoon.
           </div>
         </section>
 
         <section class="panel">
           <div class="panel-head">
             <div>
-              <h2>Best Practical Method</h2>
+              <h2>Matemaatika taust</h2>
             </div>
           </div>
-          <ol class="steps">
-            <li>Type the island name and let the app search OpenStreetMap.</li>
-            <li>If a polygon is returned, the app measures that outline directly in kilometers.</li>
-            <li>Use a smaller step size to follow more bends and a larger one for a coarser estimate.</li>
-            <li>If no polygon is available, the best fallback is a satellite map plus manual tracing.</li>
-          </ol>
+          <div class="legend">
+            <p><strong>Fraktaal</strong> on kuju, milles sama muster kordub eri suurustes.</p>
+            <p><strong>Kochi lumhelves</strong> on klassikaline näide: iga lõik jaguneb aina väiksemateks sakilisteks lõikudeks.</p>
+            <p><strong>Rannajoone paradoks</strong> näitab, et väiksema mõõtepulgaga mõõtes saad rannajoonele suurema pikkuse.</p>
+            <p><strong>Fraktaaldimensioon</strong> jääb joone ja pinna vahele, sest kuju on detailne rohkem kui tavaline joon.</p>
+          </div>
         </section>
       </aside>
 
       <section class="content">
         <div class="tool-switcher">
-          <button id="showIsland" class="secondary" type="button">Island Tool</button>
+          <button id="showIsland" class="active" type="button">Saare mõõtmine</button>
           <button id="showDemo" class="active" type="button">Demo</button>
-          <button id="showFractal" class="secondary" type="button">Fractals</button>
+          <button id="showFractal" class="secondary" type="button">Fraktalid</button>
         </div>
 
         <section id="demoSection" class="panel">
           <div class="panel-head">
             <div>
-              <h2>Coastline Paradox Demo</h2>
-              <p>A fractal-like shoreline shows why coastlines get longer when measured with smaller rulers.</p>
+              <h2>Rannajoone paradoks</h2>
             </div>
           </div>
 
@@ -449,40 +539,40 @@
               </div>
               <div class="metrics">
                 <div class="metric">
-                  <div class="label">Step Size</div>
+                  <div class="label">Samm</div>
                   <div class="value" id="demoStep">1.0</div>
                 </div>
                 <div class="metric">
-                  <div class="label">Measured Length</div>
+                  <div class="label">Mõõdetud pikkus</div>
                   <div class="value" id="demoLength">0.00</div>
                 </div>
                 <div class="metric">
-                  <div class="label">True Polyline</div>
+                  <div class="label">Tegelik joon</div>
                   <div class="value" id="demoActual">0.00</div>
                 </div>
                 <div class="metric">
-                  <div class="label">Sample Points</div>
+                  <div class="label">Punktid</div>
                   <div class="value" id="demoSamples">0</div>
                 </div>
               </div>
             </div>
             <div>
-              <h3>Why does the measured length increase?</h3>
+              <h3>Miks pikkus kasvab?</h3>
               <p class="explain">
-                Coastlines have structure at many scales. A large ruler skips smaller coves and jagged edges,
-                so the measured length is shorter. A small ruler follows more of that detail, so the measured
-                coastline gets longer.
+                Mida väiksem mõõtepulk, seda rohkem väikseid lookeid ja soppe arvesse läheb.
               </p>
               <div class="callout" id="demoSummary"></div>
+              <div class="chart-wrap canvas-wrap">
+                <canvas id="paradoxChart" width="920" height="280"></canvas>
+              </div>
             </div>
           </div>
         </section>
 
-        <section id="islandSection" class="panel hidden-section">
+        <section id="islandSection" class="panel">
           <div class="panel-head">
             <div>
-              <h2>Online Island Measurement</h2>
-              <p>The app tries to fetch a place polygon from OpenStreetMap and then measures it geodesically.</p>
+              <h2>Saare mõõtmine</h2>
             </div>
           </div>
 
@@ -492,70 +582,67 @@
                 <div id="map"></div>
               </div>
               <div class="field" style="margin-top: 14px;">
-                <label for="stepSize">Measurement scale (step size)</label>
+                <label for="stepSize">Mõõtkava samm</label>
                 <select id="distanceUnit">
-                  <option value="km">Kilometers</option>
-                  <option value="m">Meters</option>
-                  <option value="mi">Miles</option>
-                  <option value="nmi">Nautical miles</option>
+                  <option value="km">Kilomeetrid</option>
+                  <option value="m">Meetrid</option>
+                  <option value="mi">Miilid</option>
+                  <option value="nmi">Meremiilid</option>
                 </select>
+                <div class="button-row">
+                  <button class="secondary quick-step" type="button" data-km="0.001">1 m</button>
+                  <button class="secondary quick-step" type="button" data-km="0.1">100 m</button>
+                  <button class="secondary quick-step" type="button" data-km="1">1 km</button>
+                  <button class="secondary quick-step" type="button" data-km="100">100 km</button>
+                </div>
                 <input id="stepSize" type="range" min="0.0001" max="100" step="0.0001" value="1">
-                <input id="stepInput" type="number" min="0.1" step="0.1" value="1" placeholder="Step size">
+                <input id="stepInput" type="number" min="0.1" step="0.1" value="1" placeholder="Samm">
                 <div class="range-value" id="stepValue">1.000 km steps</div>
               </div>
               <div class="field">
-                <label for="sampleCap">Maximum sample points</label>
-                <input id="sampleCap" type="number" min="500" max="30000" step="500" value="3000">
-              </div>
-              <div class="field">
-                <label for="precisionMode">Precision mode</label>
-                <select id="precisionMode">
-                  <option value="balanced">Balanced</option>
-                  <option value="high">High precision</option>
-                </select>
+                <label for="sampleCap">Punktide arv</label>
+                <div class="button-row">
+                  <button class="secondary quick-points" type="button" data-points="100">100</button>
+                  <button class="secondary quick-points" type="button" data-points="500">500</button>
+                  <button class="secondary quick-points" type="button" data-points="1000">1000</button>
+                  <button class="secondary quick-points" type="button" data-points="3000">3000</button>
+                </div>
+                <input id="sampleCap" type="range" min="3" max="3000" step="1" value="1000">
+                <input id="sampleCapValue" type="number" min="3" max="3000" step="1" value="1000">
               </div>
               <div class="button-row">
-                <button id="downloadJson" class="secondary" type="button">Download JSON</button>
-                <button id="downloadGeoJson" class="secondary" type="button">Download GeoJSON</button>
+                <button id="applyIslandSettings" class="primary" type="button">Rakenda</button>
+                <button id="reloadPlace" class="secondary" type="button">Laadi uuesti</button>
+                <button id="downloadJson" class="secondary" type="button">Laadi JSON</button>
+                <button id="downloadGeoJson" class="secondary" type="button">Laadi GeoJSON</button>
+              </div>
+              <div id="mapLoading" class="loading-box">
+                <span class="spinner"></span>
+                <span>Laen...</span>
               </div>
               <div class="metrics">
                 <div class="metric">
-                  <div class="label">Loaded Place</div>
+                  <div class="label">Koht</div>
                   <div class="value" id="placeLabel">None</div>
                 </div>
                 <div class="metric">
-                  <div class="label">Step Size</div>
+                  <div class="label">Samm</div>
                   <div class="value" id="placeStep">1.0 km</div>
                 </div>
                 <div class="metric">
-                  <div class="label">Measured Coast</div>
+                  <div class="label">Mõõdetud</div>
                   <div class="value" id="placeLength">0.00 km</div>
                 </div>
                 <div class="metric">
-                  <div class="label">Polygon Perimeter</div>
-                  <div class="value" id="placeActual">0.00 km</div>
-                </div>
-                <div class="metric">
-                  <div class="label">Sample Points</div>
+                  <div class="label">Punktid</div>
                   <div class="value" id="placeSamples">0</div>
                 </div>
               </div>
             </div>
             <div>
-              <h3>Why this is easier</h3>
-              <div class="legend">
-                <p><strong>No manual scale entry:</strong> the geometry is in real coordinates already, so the result can be measured in kilometers directly.</p>
-                <p><strong>No low-quality screenshot problem:</strong> when a polygon is available, we use vector geometry from map data instead of guessing from blurry pixels.</p>
-                <p><strong>Mostly one input:</strong> usually you only need to type the island name and adjust the step-size slider.</p>
-                <p><strong>More honest output:</strong> the app now shows both the measured coastline at your chosen ruler size and the full polygon perimeter from the loaded map geometry.</p>
-                <p><strong>Visible ruler effect:</strong> the red outline on the map is the sampled measurement path, so it changes when you change the step size.</p>
-                <p><strong>Important limitation:</strong> the coastline drawn by the basemap tiles when you zoom is not what gets measured. The measurement uses the loaded place geometry from OpenStreetMap/Nominatim.</p>
-              </div>
+              <h3>Lühidalt</h3>
               <div class="callout" id="placeSummary">
-                Search for an island to load its outline. The app will show both the coastline estimate at your chosen ruler size and the full loaded polygon perimeter, so you can tell whether the slider or the source geometry is the limiting factor.
-              </div>
-              <div class="callout" style="margin-top: 12px;">
-                If you expect Saaremaa to be around 874 km and this still comes out lower even at a very small step size, that means the loaded OpenStreetMap polygon is more simplified than the coastline source behind that 874 km figure.
+                Otsi saar, muuda seadeid ja mõõda.
               </div>
             </div>
           </div>
@@ -564,30 +651,43 @@
         <section id="fractalSection" class="panel hidden-section">
           <div class="panel-head">
             <div>
-              <h2>Fractal Generator</h2>
-              <p>Choose a classic fractal and vary its depth to compare recursive patterns.</p>
+              <h2>Fraktalid</h2>
             </div>
           </div>
 
           <div class="fractal-layout">
             <div>
               <div class="field">
-                <label for="fractalType">Fractal Type</label>
+                <label for="fractalType">Fraktaali tüüp</label>
                 <select id="fractalType">
-                  <option value="koch">Koch curve</option>
-                  <option value="sierpinski">Sierpinski triangle</option>
-                  <option value="tree">Fractal tree</option>
+                  <option value="koch">Kochi kõver</option>
+                  <option value="sierpinski">Sierpinski kolmnurk</option>
+                  <option value="tree">Fraktaalne puu</option>
                 </select>
               </div>
               <div class="field">
-                <label for="fractalDepth">Fractal Depth / Iteration</label>
+                <label for="fractalDepth">Sügavus</label>
                 <input id="fractalDepth" type="range" min="1" max="7" value="4">
                 <div class="range-value" id="depthValue">4</div>
               </div>
+              <div class="field">
+                <label for="fractalPrimary">Põhivärv</label>
+                <input id="fractalPrimary" type="color" value="#1d4ed8">
+              </div>
+              <div class="field">
+                <label for="fractalSecondary">Lisavärv</label>
+                <input id="fractalSecondary" type="color" value="#7c3aed">
+              </div>
+              <div class="field">
+                <label>Suum</label>
+                <div class="button-row">
+                  <button id="fractalZoomIn" class="secondary" type="button">+</button>
+                  <button id="fractalZoomOut" class="secondary" type="button">-</button>
+                  <button id="fractalZoomReset" class="secondary" type="button">Reset</button>
+                </div>
+              </div>
               <div class="legend">
-                <p><strong>Koch curve:</strong> each line segment becomes four smaller segments.</p>
-                <p><strong>Sierpinski triangle:</strong> a triangle repeats itself in three smaller copies.</p>
-                <p><strong>Fractal tree:</strong> each branch splits into smaller branches.</p>
+                <p id="fractalDescription"><strong>Kochi kõver:</strong> iga joonelõik jaguneb väiksemateks lõikudeks.</p>
               </div>
             </div>
             <div>
@@ -598,10 +698,46 @@
           </div>
         </section>
 
-        <section class="footnote">
-          This depends on public OpenStreetMap data loaded in your browser. Some islands or coastlines may return coarse polygons,
-          multiple candidate places, or no polygon at all. When that happens, the result is still an estimate, not an official shoreline survey.
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Fraktalid looduses</h2>
+            </div>
+          </div>
+          <div class="nature-grid">
+            <article class="nature-card">
+              <div class="nature-visual">🌿</div>
+              <h3>Sõnajalg</h3>
+              <p class="explain">Iga väiksem leheosa meenutab kogu sõnajalga.</p>
+            </article>
+            <article class="nature-card">
+              <div class="nature-visual">❄️</div>
+              <h3>Lumehelves</h3>
+              <p class="explain">Harud korduvad sümmeetriliselt väiksemates mõõtudes.</p>
+            </article>
+            <article class="nature-card">
+              <div class="nature-visual">🌳</div>
+              <h3>Puu</h3>
+              <p class="explain">Tüvi jaguneb harudeks ja oksad väiksemateks harudeks.</p>
+            </article>
+            <article class="nature-card">
+              <div class="nature-visual">🫁</div>
+              <h3>Kopsud</h3>
+              <p class="explain">Bronhid hargnevad mitmel tasemel, et pindala suureneks.</p>
+            </article>
+            <article class="nature-card">
+              <div class="nature-visual">⚡</div>
+              <h3>Välk</h3>
+              <p class="explain">Elektrilahendus hargneb nagu fraktaalne puu.</p>
+            </article>
+            <article class="nature-card">
+              <div class="nature-visual">🏝️</div>
+              <h3>Rannajoon</h3>
+              <p class="explain">Sopid ja poolsaared korduvad eri mõõtkavades.</p>
+            </article>
+          </div>
         </section>
+
       </section>
     </section>
   </main>
@@ -612,7 +748,7 @@
     crossorigin=""
   ></script>
   <script>
-    const DEFAULT_MAP_SAMPLE_POINTS = 3000;
+    const DEFAULT_MAP_SAMPLE_POINTS = 1000;
     const MAX_DEMO_SAMPLE_POINTS = 1500;
 
     const stepSlider = document.getElementById("stepSize");
@@ -620,9 +756,14 @@
     const stepValue = document.getElementById("stepValue");
     const distanceUnit = document.getElementById("distanceUnit");
     const sampleCapInput = document.getElementById("sampleCap");
-    const precisionMode = document.getElementById("precisionMode");
+    const sampleCapValue = document.getElementById("sampleCapValue");
+    const quickStepButtons = document.querySelectorAll(".quick-step");
+    const quickPointsButtons = document.querySelectorAll(".quick-points");
+    const applyIslandSettings = document.getElementById("applyIslandSettings");
+    const reloadPlace = document.getElementById("reloadPlace");
     const downloadJson = document.getElementById("downloadJson");
     const downloadGeoJson = document.getElementById("downloadGeoJson");
+    const mapLoading = document.getElementById("mapLoading");
     const baseMapSelect = document.getElementById("baseMap");
     const placeSearch = document.getElementById("placeSearch");
     const searchButton = document.getElementById("searchButton");
@@ -641,11 +782,12 @@
     const demoActual = document.getElementById("demoActual");
     const demoSamples = document.getElementById("demoSamples");
     const demoSummary = document.getElementById("demoSummary");
+    const paradoxChart = document.getElementById("paradoxChart");
+    const paradoxChartCtx = paradoxChart.getContext("2d");
 
     const placeLabel = document.getElementById("placeLabel");
     const placeStep = document.getElementById("placeStep");
     const placeLength = document.getElementById("placeLength");
-    const placeActual = document.getElementById("placeActual");
     const placeSamples = document.getElementById("placeSamples");
     const placeSummary = document.getElementById("placeSummary");
 
@@ -654,9 +796,15 @@
     const fractalType = document.getElementById("fractalType");
     const fractalDepth = document.getElementById("fractalDepth");
     const depthValue = document.getElementById("depthValue");
+    const fractalPrimary = document.getElementById("fractalPrimary");
+    const fractalSecondary = document.getElementById("fractalSecondary");
+    const fractalDescription = document.getElementById("fractalDescription");
+    const fractalZoomIn = document.getElementById("fractalZoomIn");
+    const fractalZoomOut = document.getElementById("fractalZoomOut");
+    const fractalZoomReset = document.getElementById("fractalZoomReset");
 
     const appState = {
-      activeSection: "demo",
+      activeSection: "island",
       placeName: null,
       geoPoints: [],
       rawGeoPoints: [],
@@ -668,7 +816,14 @@
       mapReady: false,
       demoDrawn: false,
       fractalDrawn: false,
-      maxMapSamplePoints: DEFAULT_MAP_SAMPLE_POINTS
+      maxMapSamplePoints: DEFAULT_MAP_SAMPLE_POINTS,
+      islandSettingsDirty: false,
+      fractalZoom: 1,
+      fractalOffsetX: 0,
+      fractalOffsetY: 0,
+      fractalDragging: false,
+      fractalDragStartX: 0,
+      fractalDragStartY: 0
     };
 
     let map = null;
@@ -687,6 +842,12 @@
       m: "m",
       mi: "mi",
       nmi: "nmi"
+    };
+
+    const FRACTAL_DESCRIPTIONS = {
+      koch: "<strong>Kochi kõver:</strong> iga lõik asendub sakilise mustriga.",
+      sierpinski: "<strong>Sierpinski kolmnurk:</strong> kolmnurk jaguneb aina väiksemateks kolmnurkadeks.",
+      tree: "<strong>Fraktaalne puu:</strong> iga haru jaguneb omakorda uuteks harudeks."
     };
 
     function initMap() {
@@ -711,6 +872,11 @@
 
       activeBaseLayer = baseLayers.osm.addTo(map);
       appState.mapReady = true;
+    }
+
+    function setMapLoading(isLoading, text = "Laen...") {
+      mapLoading.classList.toggle("active", isLoading);
+      mapLoading.lastElementChild.textContent = text;
     }
 
     function mapDistanceKm(a, b) {
@@ -877,31 +1043,24 @@
         };
       }
 
-      const measuredLength =
-        stepSizeKm <= totalLength / appState.maxMapSamplePoints
-          ? totalLength
-          : null;
-
-      const visualStepKm = Math.max(stepSizeKm, totalLength / appState.maxMapSamplePoints);
+      const effectiveStepKm = Math.max(stepSizeKm, totalLength / appState.maxMapSamplePoints);
+      const visualStepKm = effectiveStepKm;
       const sampledPoints = [];
       for (let d = 0; d < totalLength; d += visualStepKm) {
         sampledPoints.push(interpolateGeo(points, d, closed));
       }
       sampledPoints.push(closed ? { ...sampledPoints[0] } : { ...points[points.length - 1] });
 
-      let displayedMeasuredLength = measuredLength;
-      if (displayedMeasuredLength === null) {
-        displayedMeasuredLength = 0;
-        for (let i = 0; i < sampledPoints.length - 1; i += 1) {
-          displayedMeasuredLength += mapDistanceKm(sampledPoints[i], sampledPoints[i + 1]);
-        }
+      let measuredLength = 0;
+      for (let i = 0; i < sampledPoints.length - 1; i += 1) {
+        measuredLength += mapDistanceKm(sampledPoints[i], sampledPoints[i + 1]);
       }
 
       return {
         sampledPoints,
-        measuredLength: displayedMeasuredLength,
+        measuredLength,
         totalLength,
-        effectiveStepKm: stepSizeKm,
+        effectiveStepKm,
         visualStepKm
       };
     }
@@ -974,7 +1133,11 @@
         setTimeout(() => {
           map.invalidateSize();
         }, 0);
-        updatePlaceMetrics();
+        if (appState.islandSettingsDirty) {
+          mapStatus.textContent = "Seaded muutusid. Vajuta Rakenda.";
+        } else {
+          updatePlaceMetrics();
+        }
       } else if (section === "demo" && !appState.demoDrawn) {
         drawDemo();
         appState.demoDrawn = true;
@@ -997,6 +1160,13 @@
           drawDemo();
         }
       });
+    }
+
+    function markIslandSettingsDirty() {
+      appState.islandSettingsDirty = true;
+      if (appState.activeSection === "island") {
+        mapStatus.textContent = "Seaded muutusid. Vajuta Rakenda.";
+      }
     }
 
     function simplifyGeoPoints(points) {
@@ -1058,9 +1228,9 @@
 
       if (appState.rawGeoPoints.length < 3) {
         placeLength.textContent = formatDistanceKm(0);
-        placeActual.textContent = formatDistanceKm(0);
         placeSamples.textContent = "0";
         updateSampledLayer([]);
+        drawParadoxChart([]);
         return;
       }
 
@@ -1075,25 +1245,25 @@
         : 0;
       updateSampledLayer(measurement.sampledPoints);
       placeLength.textContent = formatDistanceKm(measurement.measuredLength);
-      placeActual.textContent = formatDistanceKm(measurement.totalLength);
       placeSamples.textContent = String(measurement.sampledPoints.length);
+      drawParadoxChart(appState.rawGeoPoints);
 
       let summary =
-        `${appState.placeName} is being measured directly from the loaded map outline. With a step size of ${stepLabel}, the red sampled coastline is ${formatDistanceKm(measurement.measuredLength)}, while the full loaded map perimeter is ${formatDistanceKm(measurement.totalLength)}.`;
+        `${appState.placeName}: samm ${stepLabel}, mõõdetud ${formatDistanceKm(measurement.measuredLength)}.`;
 
       if (ratio < 0.9) {
-        summary += " Your current ruler is still quite coarse for this island, so the estimate is leaving out a lot of bends.";
+        summary += " Tulemus on veel üsna üldine.";
       }
 
       if (measurement.visualStepKm > stepSizeKm) {
-        summary += ` For stability, the red outline is drawn at about ${formatStepSizeKm(measurement.visualStepKm)}, but the reported coastline length uses the full loaded perimeter once your requested ruler is finer than that.`;
+        summary += ` Praegu piirab tulemust punktide arv: tegelik kasutatud samm on umbes ${formatStepSizeKm(measurement.visualStepKm)}.`;
       }
 
       if (appState.matchMeta) {
         summary += ` Loaded source type: ${appState.matchMeta.className} / ${appState.matchMeta.typeName}.`;
       }
 
-      summary += " If this is still much lower than the expected coastline, the loaded place geometry itself is probably simplified. Zooming the basemap can show a nicer-looking coastline, but that tile styling is not the geometry being measured.";
+      summary = `${appState.placeName}: samm ${stepLabel}, mõõdetud ${formatDistanceKm(measurement.measuredLength)}, piirjoon ${formatDistanceKm(measurement.totalLength)}.`;
       placeSummary.textContent = summary;
     }
 
@@ -1140,18 +1310,19 @@
       demoActual.textContent = measurement.totalLength.toFixed(2);
       demoSamples.textContent = String(measurement.sampledPoints.length);
       demoSummary.textContent =
-        `With a ruler size of ${formatStepSizeKm(stepSize)}, the demo coastline measures ${measurement.measuredLength.toFixed(2)} units. Lowering the step size lets the ruler follow more detail, so the total grows toward the full polyline length of ${measurement.totalLength.toFixed(2)}.`;
+        `Sammuga ${formatStepSizeKm(stepSize)} saad lühema pikkuse, väiksema sammuga pikema tulemuse.`;
     }
 
     async function searchPlace() {
       initMap();
       const query = placeSearch.value.trim();
       if (!query) {
-        mapStatus.textContent = "Enter an island or coastal place name first.";
+        mapStatus.textContent = "Sisesta koha nimi.";
         return;
       }
 
-      mapStatus.textContent = `Searching OpenStreetMap for "${query}"...`;
+      setMapLoading(true, "Laen kaarti...");
+      mapStatus.textContent = `Otsin: "${query}"...`;
 
       try {
         const url =
@@ -1175,14 +1346,11 @@
           appState.geoPoints = [];
           appState.rawGeoPoints = [];
           appState.matchMeta = null;
-          placeLabel.textContent = "No polygon";
+          placeLabel.textContent = "Puudub";
           placeLength.textContent = formatDistanceKm(0);
-          placeActual.textContent = formatDistanceKm(0);
           placeSamples.textContent = "0";
-          placeSummary.textContent =
-            `OpenStreetMap found place results for "${query}", but none included a usable polygon outline. This can happen for some places.`;
-          mapStatus.textContent =
-            `No usable polygon was returned for "${query}". Try a more specific name, such as "Saaremaa Island" or "Hiiumaa".`;
+          placeSummary.textContent = `Selle koha jaoks ei leitud sobivat piirjoont.`;
+          mapStatus.textContent = `Sobivat piirjoont ei leitud.`;
           if (appState.polygonLayer) {
             map.removeLayer(appState.polygonLayer);
             appState.polygonLayer = null;
@@ -1191,12 +1359,13 @@
             map.removeLayer(appState.sampledLayer);
             appState.sampledLayer = null;
           }
+          setMapLoading(false);
           return;
         }
 
         const geoPoints = flattenGeoJSONCoordinates(match.geojson);
         if (geoPoints.length < 3) {
-          throw new Error("Returned geometry was too small to measure.");
+          throw new Error("Piirjoon on mõõtmiseks liiga väike.");
         }
 
         appState.placeName = match.display_name.split(",")[0];
@@ -1231,20 +1400,18 @@
         });
 
         updatePlaceMetrics();
-        mapStatus.textContent =
-          `Loaded ${appState.placeName} from OpenStreetMap polygon data. Move the step-size slider to compare coastline estimates.`;
+        mapStatus.textContent = `${appState.placeName} laaditud.`;
+        setMapLoading(false);
       } catch (error) {
         appState.placeName = null;
         appState.geoPoints = [];
         appState.rawGeoPoints = [];
         appState.matchMeta = null;
-        placeLabel.textContent = "Error";
+        placeLabel.textContent = "Viga";
         placeLength.textContent = formatDistanceKm(0);
-        placeActual.textContent = formatDistanceKm(0);
         placeSamples.textContent = "0";
-        placeSummary.textContent =
-          "The online place lookup failed. This may happen if you open the page offline or if the public geocoding service is unavailable.";
-        mapStatus.textContent = `Search failed: ${error.message}`;
+        placeSummary.textContent = "Koha laadimine ebaõnnestus.";
+        mapStatus.textContent = `Viga: ${error.message}`;
         if (appState.polygonLayer) {
           map.removeLayer(appState.polygonLayer);
           appState.polygonLayer = null;
@@ -1253,6 +1420,7 @@
           map.removeLayer(appState.sampledLayer);
           appState.sampledLayer = null;
         }
+        setMapLoading(false);
       }
     }
 
@@ -1309,7 +1477,7 @@
 
     function drawKochFractal(depth) {
       const points = normalizePoints(generateKochCurve(depth), fractalCanvas.width, fractalCanvas.height, 60);
-      fractalCtx.strokeStyle = "#1d4ed8";
+      fractalCtx.strokeStyle = fractalPrimary.value;
       fractalCtx.lineWidth = 2.6;
       fractalCtx.beginPath();
       fractalCtx.moveTo(points[0].x, points[0].y);
@@ -1346,8 +1514,8 @@
       const b = { x: pad, y: fractalCanvas.height - pad };
       const c = { x: fractalCanvas.width - pad, y: fractalCanvas.height - pad };
 
-      fractalCtx.fillStyle = "rgba(124, 58, 237, 0.28)";
-      fractalCtx.strokeStyle = "#7c3aed";
+      fractalCtx.fillStyle = `${fractalSecondary.value}55`;
+      fractalCtx.strokeStyle = fractalPrimary.value;
       fractalCtx.lineWidth = 1;
       drawSierpinskiTriangle(a, b, c, depth);
     }
@@ -1359,7 +1527,7 @@
 
       const x2 = x + Math.cos(angle) * length;
       const y2 = y - Math.sin(angle) * length;
-      fractalCtx.strokeStyle = depth > 2 ? "#166534" : "#65a30d";
+      fractalCtx.strokeStyle = depth > 2 ? fractalPrimary.value : fractalSecondary.value;
       fractalCtx.lineWidth = Math.max(depth * 0.8, 1);
       fractalCtx.beginPath();
       fractalCtx.moveTo(x, y);
@@ -1375,12 +1543,69 @@
       branch(fractalCanvas.width / 2, fractalCanvas.height - 40, Math.PI / 2, 110, depth);
     }
 
+    function drawParadoxChart(points) {
+      paradoxChartCtx.clearRect(0, 0, paradoxChart.width, paradoxChart.height);
+      paradoxChartCtx.fillStyle = "#f8fafc";
+      paradoxChartCtx.fillRect(0, 0, paradoxChart.width, paradoxChart.height);
+
+      const steps = [0.1, 1, 10];
+      const values = points.length >= 3
+        ? steps.map((step) => sampleGeo(points, step, true).measuredLength)
+        : [0, 0, 0];
+
+      const pad = 46;
+      const innerW = paradoxChart.width - pad * 2;
+      const innerH = paradoxChart.height - pad * 2;
+      const maxValue = Math.max(...values, 1);
+
+      paradoxChartCtx.strokeStyle = "#94a3b8";
+      paradoxChartCtx.lineWidth = 1;
+      paradoxChartCtx.strokeRect(pad, pad, innerW, innerH);
+
+      paradoxChartCtx.strokeStyle = "#dc2626";
+      paradoxChartCtx.fillStyle = "#dc2626";
+      paradoxChartCtx.lineWidth = 2.5;
+      paradoxChartCtx.beginPath();
+
+      values.forEach((value, index) => {
+        const x = pad + (innerW / (values.length - 1)) * index;
+        const y = pad + innerH - (value / maxValue) * innerH;
+        if (index === 0) {
+          paradoxChartCtx.moveTo(x, y);
+        } else {
+          paradoxChartCtx.lineTo(x, y);
+        }
+      });
+      paradoxChartCtx.stroke();
+
+      paradoxChartCtx.fillStyle = "#1f2937";
+      paradoxChartCtx.font = "16px Georgia";
+      values.forEach((value, index) => {
+        const x = pad + (innerW / (values.length - 1)) * index;
+        const y = pad + innerH - (value / maxValue) * innerH;
+        paradoxChartCtx.beginPath();
+        paradoxChartCtx.arc(x, y, 4, 0, Math.PI * 2);
+        paradoxChartCtx.fillStyle = "#dc2626";
+        paradoxChartCtx.fill();
+        paradoxChartCtx.fillStyle = "#1f2937";
+        paradoxChartCtx.fillText(`${steps[index]} km`, x - 18, paradoxChart.height - 14);
+        paradoxChartCtx.fillText(value.toFixed(1), x - 18, y - 10);
+      });
+    }
+
     function drawFractal() {
       appState.fractalDrawn = true;
       clearFractalCanvas();
       const type = fractalType.value;
       const depth = Number(fractalDepth.value);
       depthValue.textContent = String(depth);
+      fractalDescription.innerHTML = FRACTAL_DESCRIPTIONS[type];
+
+      fractalCtx.save();
+      fractalCtx.translate(fractalCanvas.width / 2, fractalCanvas.height / 2);
+      fractalCtx.translate(appState.fractalOffsetX, appState.fractalOffsetY);
+      fractalCtx.scale(appState.fractalZoom, appState.fractalZoom);
+      fractalCtx.translate(-fractalCanvas.width / 2, -fractalCanvas.height / 2);
 
       if (type === "koch") {
         drawKochFractal(depth);
@@ -1389,11 +1614,17 @@
       } else {
         drawFractalTree(depth);
       }
+
+      fractalCtx.restore();
     }
 
     stepSlider.addEventListener("input", () => {
       setStepSizeKm(Number(stepSlider.value));
-      scheduleRefresh();
+      if (appState.activeSection === "island") {
+        markIslandSettingsDirty();
+      } else {
+        scheduleRefresh();
+      }
     });
 
     stepInput.addEventListener("input", () => {
@@ -1403,13 +1634,17 @@
       }
       const kmValue = value / UNIT_FACTORS_FROM_KM[distanceUnit.value];
       setStepSizeKm(kmValue);
-      scheduleRefresh();
+      if (appState.activeSection === "island") {
+        markIslandSettingsDirty();
+      } else {
+        scheduleRefresh();
+      }
     });
 
     distanceUnit.addEventListener("change", () => {
       setStepSizeKm(getStepSizeKm());
       if (appState.activeSection === "island") {
-        updatePlaceMetrics();
+        markIslandSettingsDirty();
       } else if (appState.activeSection === "demo") {
         drawDemo();
       }
@@ -1417,28 +1652,75 @@
 
     sampleCapInput.addEventListener("input", () => {
       const value = Number(sampleCapInput.value);
-      if (!Number.isFinite(value) || value < 500) {
+      if (!Number.isFinite(value) || value < 3) {
         return;
       }
-      appState.maxMapSamplePoints = Math.min(30000, Math.max(500, Math.round(value)));
+      appState.maxMapSamplePoints = Math.min(3000, Math.max(3, Math.round(value)));
+      sampleCapValue.value = String(appState.maxMapSamplePoints);
       appState.placeCache.clear();
       if (appState.activeSection === "island") {
-        updatePlaceMetrics();
+        markIslandSettingsDirty();
       }
     });
 
-    precisionMode.addEventListener("change", () => {
-      if (precisionMode.value === "high") {
-        appState.maxMapSamplePoints = 12000;
-        sampleCapInput.value = "12000";
-      } else {
-        appState.maxMapSamplePoints = DEFAULT_MAP_SAMPLE_POINTS;
-        sampleCapInput.value = String(DEFAULT_MAP_SAMPLE_POINTS);
+    sampleCapValue.addEventListener("input", () => {
+      const value = Number(sampleCapValue.value);
+      if (!Number.isFinite(value) || value < 3) {
+        return;
       }
+      appState.maxMapSamplePoints = Math.min(3000, Math.max(3, Math.round(value)));
+      sampleCapInput.value = String(appState.maxMapSamplePoints);
       appState.placeCache.clear();
       if (appState.activeSection === "island") {
-        updatePlaceMetrics();
+        markIslandSettingsDirty();
       }
+    });
+
+    quickStepButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const kmValue = Number(button.dataset.km);
+        if (!Number.isFinite(kmValue) || kmValue <= 0) {
+          return;
+        }
+        setStepSizeKm(kmValue);
+        if (appState.activeSection === "island") {
+          markIslandSettingsDirty();
+        } else {
+          scheduleRefresh();
+        }
+      });
+    });
+
+    quickPointsButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const value = Number(button.dataset.points);
+        if (!Number.isFinite(value) || value < 3) {
+          return;
+        }
+        appState.maxMapSamplePoints = Math.min(3000, Math.max(3, Math.round(value)));
+        sampleCapInput.value = String(appState.maxMapSamplePoints);
+        sampleCapValue.value = String(appState.maxMapSamplePoints);
+        appState.placeCache.clear();
+        if (appState.activeSection === "island") {
+          markIslandSettingsDirty();
+        }
+      });
+    });
+
+    applyIslandSettings.addEventListener("click", () => {
+      setMapLoading(true, "Arvutan...");
+      appState.islandSettingsDirty = false;
+      requestAnimationFrame(() => {
+        updatePlaceMetrics();
+        mapStatus.textContent = "Seaded rakendatud.";
+        setMapLoading(false);
+      });
+    });
+
+    reloadPlace.addEventListener("click", () => {
+      appState.placeCache.clear();
+      appState.islandSettingsDirty = false;
+      searchPlace();
     });
 
     downloadJson.addEventListener("click", () => {
@@ -1492,10 +1774,53 @@
 
     fractalType.addEventListener("change", drawFractal);
     fractalDepth.addEventListener("input", drawFractal);
+    fractalPrimary.addEventListener("input", drawFractal);
+    fractalSecondary.addEventListener("input", drawFractal);
+    fractalZoomIn.addEventListener("click", () => {
+      appState.fractalZoom = Math.min(8, appState.fractalZoom * 1.2);
+      drawFractal();
+    });
+    fractalZoomOut.addEventListener("click", () => {
+      appState.fractalZoom = Math.max(0.4, appState.fractalZoom / 1.2);
+      drawFractal();
+    });
+    fractalZoomReset.addEventListener("click", () => {
+      appState.fractalZoom = 1;
+      appState.fractalOffsetX = 0;
+      appState.fractalOffsetY = 0;
+      drawFractal();
+    });
+    fractalCanvas.addEventListener("mousedown", (event) => {
+      appState.fractalDragging = true;
+      appState.fractalDragStartX = event.clientX;
+      appState.fractalDragStartY = event.clientY;
+      fractalCanvas.classList.add("dragging");
+    });
+    fractalCanvas.addEventListener("mousemove", (event) => {
+      if (!appState.fractalDragging) {
+        return;
+      }
+      const dx = event.clientX - appState.fractalDragStartX;
+      const dy = event.clientY - appState.fractalDragStartY;
+      appState.fractalDragStartX = event.clientX;
+      appState.fractalDragStartY = event.clientY;
+      appState.fractalOffsetX += dx;
+      appState.fractalOffsetY += dy;
+      drawFractal();
+    });
+    fractalCanvas.addEventListener("mouseup", () => {
+      appState.fractalDragging = false;
+      fractalCanvas.classList.remove("dragging");
+    });
+    fractalCanvas.addEventListener("mouseleave", () => {
+      appState.fractalDragging = false;
+      fractalCanvas.classList.remove("dragging");
+    });
 
     setStepSizeKm(1);
     sampleCapInput.value = String(DEFAULT_MAP_SAMPLE_POINTS);
-    setActiveSection("demo");
+    sampleCapValue.value = String(DEFAULT_MAP_SAMPLE_POINTS);
+    setActiveSection("island");
   </script>
 </body>
 </html>
