@@ -3,7 +3,6 @@
 * <img width="430" height="286" alt="image" src="https://github.com/user-attachments/assets/a2d3d06d-ef58-4019-857c-08281233300f" />
 <img width="1200" height="630" alt="image" src="https://github.com/user-attachments/assets/fa6e10df-abfb-4cc8-990a-55d5bff7cc3d" />
 
-
 * Rekursioon tähendab lihtsalt õeldes kordumist. Rekursioon toimub näiteks siis kui suunata kaks peeglit ükteist vaatama, näha on aina väiksemaid peegleid üksteise sees.
 * <img width="251" height="201" alt="image" src="https://github.com/user-attachments/assets/07a43653-6a4c-4e9a-bba4-6e0ba26ef730" />
 Esimeses versioonis genereerisime TI-ga saaremaa kuju
@@ -20,5 +19,7 @@ Võtsime kasutusele "OpenCV" mooduli
 <img width="991" height="813" alt="Kuvatõmmis 2026-04-25 112545" src="https://github.com/user-attachments/assets/737c402b-31db-4c11-957a-8386080520e3" />
 <img width="1630" height="981" alt="Kuvatõmmis 2026-04-25 134444" src="https://github.com/user-attachments/assets/ee15d8f0-1f21-40de-b0fa-78361aaee0c9" />
 * lõplik versioon pildi järgi joonise tegemisest
+  <img width="1149" height="989" alt="Kuvatõmmis 2026-04-25 143142" src="https://github.com/user-attachments/assets/1983030c-7dd5-4d45-bfe1-a20c2b604a8c" />
+* meie viimane lahendus mille valisime välja
 <img width="4080" height="3060" alt="20260425_134946" src="https://github.com/user-attachments/assets/137a73c1-5b92-4fc0-858e-e208809ab8b6" />
 Tiim: Paul Morgan Kaljuste, Mihkel Martjak, Iko Muru
