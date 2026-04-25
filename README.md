@@ -1,6 +1,12 @@
 # Rannajoone paradoks ja loodusmustrid
 * Fraktalid on matemaatilised kujundid või mustrid, mis korduvad iseendas eri mõõtkavades. See tähendab, et kui sa suurendad mingit osa fraktalist, näeb see välja sarnane kogu kujundiga.
+* <img width="430" height="286" alt="image" src="https://github.com/user-attachments/assets/a2d3d06d-ef58-4019-857c-08281233300f" />
+<img width="1200" height="630" alt="image" src="https://github.com/user-attachments/assets/fa6e10df-abfb-4cc8-990a-55d5bff7cc3d" />
+
+
 * Rekursioon tähendab lihtsalt õeldes kordumist. Rekursioon toimub näiteks siis kui suunata kaks peeglit ükteist vaatama, näha on aina väiksemaid peegleid üksteise sees.
+* <img width="251" height="201" alt="image" src="https://github.com/user-attachments/assets/07a43653-6a4c-4e9a-bba4-6e0ba26ef730" />
+
 <img width="1280" height="810" alt="Kuvatõmmis 2026-04-25 114735" src="https://github.com/user-attachments/assets/633d2a97-c2e0-43cc-85c6-eeb6176c9057" />
 <img width="1483" height="844" alt="Kuvatõmmis 2026-04-25 114309" src="https://github.com/user-attachments/assets/0980f9de-7f66-4357-b3ed-040d29b55c22" />
 <img width="1166" height="781" alt="Kuvatõmmis 2026-04-25 114539" src="https://github.com/user-attachments/assets/75cff99d-7e59-4f78-917b-613831601274" />
