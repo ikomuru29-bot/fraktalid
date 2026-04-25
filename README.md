@@ -10,4 +10,4 @@
 <img width="991" height="813" alt="Kuvatõmmis 2026-04-25 112545" src="https://github.com/user-attachments/assets/737c402b-31db-4c11-957a-8386080520e3" />
 <img width="1630" height="981" alt="Kuvatõmmis 2026-04-25 134444" src="https://github.com/user-attachments/assets/ee15d8f0-1f21-40de-b0fa-78361aaee0c9" />
 <img width="4080" height="3060" alt="20260425_134946" src="https://github.com/user-attachments/assets/137a73c1-5b92-4fc0-858e-e208809ab8b6" />
-* Tiim: Iko Muru, Mihkel Martjak, Paul Morgan Kaljuste
+Tiim: Iko Muru, Mihkel Martjak, Paul Morgan Kaljuste
